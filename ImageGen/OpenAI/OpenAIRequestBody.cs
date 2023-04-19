@@ -19,7 +19,7 @@ namespace ImageGen.OpenAI
 		public OpenAIRequestBody(string prompt, 
 			NumberEnum n = NumberEnum._1,
 			SizeEnum size = SizeEnum._1024,
-			ResponseFormatEnum responseFormat = ResponseFormatEnum.Url, 
+			ResponseFormatEnum responseFormat = ResponseFormatEnum.Base64Json, 
 			string? user = null)
 		{
 			Prompt = prompt;

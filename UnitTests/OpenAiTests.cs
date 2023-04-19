@@ -26,5 +26,57 @@ namespace UnitTests
 			Assert.AreEqual(req.ResponseFormat, OpenAiConstants.ResponseFormat.Url);
 			Assert.AreEqual(req.User, "user_name");
 		}
+
+		[TestMethod]
+		public async Task ImageFetcherWillFireOnErrorEvent()
+		{
+			var fetcher = new ImageFetcher();
+
+			int testVal = 0;
+
+			fetcher.OnError += (s, e) => 
+			{
+				testVal++;
+				Assert.AreEqual("Unauthorized" ,e.Exception.Message);
+			};
+
+			await fetcher.FetchImageBytes();
+
+			Assert.IsTrue(testVal == 1);
+		}
+
+		[TestMethod]
+		public async Task ImageFetcherWillFireFetchStartedEvent()
+		{
+			var fetcher = new ImageFetcher();
+
+			int testVal = 0;
+
+			fetcher.OnFetchStarted += (s, e) =>
+			{
+				testVal++;
+			};
+
+			await fetcher.FetchImageBytes();
+
+			Assert.IsTrue(testVal == 1);
+		}
+
+		[TestMethod]
+		public async Task ImageFetcherWillFireFetchFinishedEvent()
+		{
+			var fetcher = new ImageFetcher();
+
+			int testVal = 0;
+
+			fetcher.OnFetchFinished += (s, e) =>
+			{
+				testVal++;
+			};
+
+			await fetcher.FetchImageBytes();
+
+			Assert.IsTrue(testVal == 1);
+		}
 	}
 }

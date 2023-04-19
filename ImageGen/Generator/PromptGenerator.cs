@@ -22,7 +22,7 @@ namespace ImageGen.Generator
         {
             var p = _promptData.GetRandomData();
 
-            return $"{p.Main} {p.Style}, {p.Modification}";
+            return $"{p.Main}, {p.Style}, {p.Modification}";
         }
 
 	}

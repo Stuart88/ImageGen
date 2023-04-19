@@ -57,7 +57,7 @@ namespace UnitTests
 		{
 			var p = new PromptGenerator(mockJson);
 			
-			string expected = "an equine creature in the artistic style of H. R. Giger, but every animal in the picture has flowers for eyes";
+			string expected = "an equine creature, in the artistic style of H. R. Giger, but every animal in the picture has flowers for eyes";
 			string generated = p.GeneratePrompt();
 
 			Assert.AreEqual(expected, generated);
